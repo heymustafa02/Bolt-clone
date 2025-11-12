@@ -7,7 +7,7 @@ import { Toaster } from "@/components/ui/sonner";
 
 
 export const metadata = {
-  title: "Bolt.new Clone",
+  title: "Bolty",
   description: "Build your next app ",
 };
 
