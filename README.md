@@ -1,138 +1,166 @@
-⚡ Bolty – AI-Powered Code Assistant
+# ⚡ Bolty – AI-Powered Code Assistant
 
-A production-ready full-stack platform that turns natural-language prompts into animated React apps with live preview, deploy/export, and token-based tiered pricing.
+Bolty is a full-stack platform that converts natural-language prompts into fully working animated React applications — complete with live preview, deploy/export options, authentication, and token-based pricing tiers.
 
-🎯 What it is
+---
+
+## 🎯 What It Is
 
 Bolty enables users to:
 
-Enter a natural-language prompt (e.g., “Build a dashboard with Framer Motion animations”)
+- Enter natural-language prompts  
+  _Example: “Build a dashboard with Framer Motion animations”_
+- Instantly generate full **React + Tailwind CSS** apps using AI (via CDN)
+- Preview output live in-browser using Sandpack
+- Edit files inside the editor
+- Export the generated project as a **ZIP** or deploy it
+- Access token-based pricing (PayPal payments)
+- Login with Google OAuth
+- Save workspaces, chat with the AI, and build production-grade UIs using:
+  - Framer Motion  
+  - GSAP  
+  - shadcn/ui  
+  - charts  
+  - and more…
 
-Instantly generate a full React + Tailwind-CSS app (via CDN) using AI
+---
 
-Preview it live in-browser, edit files, export ZIP or deploy
+## 🧱 Tech Stack
 
-Choose pricing tiers to unlock tokens, pay via PayPal
+| Layer | Technology |
+|-------|------------|
+| **Front-end** | Next.js (App Router), React |
+| **Styling** | Tailwind CSS (via CDN) |
+| **Live Preview** | Sandpack (codesandbox-react) |
+| **Backend & DB** | Convex (serverless functions + schema) |
+| **AI Integration** | Generative AI API (configs/AiModel.jsx) |
+| **Auth & Payments** | Google OAuth + PayPal Buttons |
+| **UI Libraries** | Framer Motion, GSAP, shadcn/ui, lucide-react |
+| **Deployment** | Vercel |
 
-Save workspaces, chat with AI, and build production-quality UIs with animation, GSAP/Framer Motion, shadcn/ui, charts, etc.
+---
 
-🧱 Tech Stack
-Layer	Technology
-Front-end	Next.js (App Router), React
-Styling	Tailwind CSS via CDN
-Live Preview	Sandpack (codesandbox-react)
-Backend & Database	Convex (serverless functions & schema)
-AI Integration	Generative-AI API (via configs/AiModel.jsx)
-Authentication & Payments	Google OAuth (Clerk or custom) + PayPal Buttons
-UI Libraries	Framer Motion, GSAP, shadcn/ui, lucide-react icons
-Deployment	Vercel
-🗂 Project Structure
-/app/                     – Next.js application directory  
-/components/             – UI + custom app components  
-/configs/                – AI model config, prompts  
-/context/                – React context providers (Messages, UserDetail, Action)  
-/convex/                 – Schema + backend functions  
-/data/                   – Static lookup/prompt files (Lookup.jsx, Prompt.jsx)  
-/hooks/                  – Custom hooks  
-/lib/                    – Utility functions  
-/public/                 – Static assets  
-package.json             – Dependencies & scripts  
-README.md                – You're here  
+## 🗂 Project Structure
+```bash
 
-🏁 Getting Started (Developer Mode)
+/app/                     – Next.js application directory
+/components/             – UI + custom app components
+/configs/                – AI model configuration
+/context/                – React context providers (Messages, UserDetail, Action)
+/convex/                 – Schema + backend functions
+/data/                   – Static prompt/lookup files (Lookup.jsx, Prompt.jsx)
+/hooks/                  – Custom hooks
+/lib/                    – Utility functions
+/public/                 – Static assets
+package.json             – Dependencies & scripts
+README.md                – You're here
 
-Clone the repo
+```
 
+---
+
+## 🏁 Getting Started (Developer Setup)
+
+### 1️⃣ Clone the Repository
+
+```bash
 git clone https://github.com/heymustafa02/Bolt-clone.git
 cd Bolt-clone
+```
 
-
-Install dependencies
-
+### 2️⃣ Install Dependencies
+```bash
 npm install
 # or yarn / pnpm
+```
 
+### 3️⃣ Add Environment Variables
 
-Add environment variables (create .env.local)
-
+Create a .env.local file:
+```bash
 NEXT_PUBLIC_CONVEX_URL=<your convex deployment>
 NEXT_PUBLIC_GOOGLE_CLIENT_ID_KEY=<your Google OAuth client ID>
 NEXT_PUBLIC_PAYPAL_CLIENT_ID=<your PayPal Client ID>
-NEXT_PUBLIC_GEMINI_API_KEY=<your Gemini API Key>
+NEXT_PUBLIC_GEMINI_API_KEY=<your Gemini API key>
+```
 
-
-Run in development mode
+### 4️⃣ Start Development Server
+```bash
 
 npm run dev
-
-
-Visit http://localhost:3000 to preview.
-
-Build for production
-
+Open http://localhost:3000 in your browser.
+```
+### 5️⃣ Build for Production
+```bash
 npm run build
 npm run start
+```
 
-💼 Pricing & Token Model
+## 💼 Pricing & Token Model
+Defined in data/Lookup.jsx:
 
-From data/Lookup.jsx:
-
+```bash
 [
-  { name:'Basic',        tokens:'50 K',    value:50000,   price:4.99  },
-  { name:'Starter',      tokens:'120 K',   value:120000,  price:9.99  },
-  { name:'Pro',          tokens:'2.5 M',   value:2500000, price:19.99 },
-  { name:'Unlimited',    tokens:'Unlimited',value:999999999, price:49.99 }
+  { name:'Basic',        tokens:'50 K',     value:50000,      price:4.99  },
+  { name:'Starter',      tokens:'120 K',    value:120000,     price:9.99  },
+  { name:'Pro',          tokens:'2.5 M',    value:2500000,    price:19.99 },
+  { name:'Unlimited',    tokens:'Unlimited',value:999999999,  price:49.99 }
 ]
+Payments are handled through PayPal, and on success, the user's token count is updated in Convex.
+```
+## ✅ Key Features
+🔥 Prompt-based AI project generation (React + Tailwind)
 
+⚡ Live preview via Sandpack
 
-Payments are processed via PayPal; on success the user’s token count is updated in Convex.
+✏️ Built-in code editor
 
-✅ Key Features
+📦 Export project as ZIP (JSZip + file-saver)
 
-Prompt-based project generation (React + Tailwind + animation)
+💳 Token-based pricing system
 
-Live preview & code editor via Sandpack
+🔐 Google OAuth authentication
 
-Export project as ZIP (via JSZip & file-saver)
+🌗 Light/Dark theme with next-themes
 
-Tiered pricing model & token consumption
+🎞️ Animated UI support (Framer Motion + GSAP)
 
-Authentication via Google OAuth
+🚀 Deploy / Export UI toggles
 
-Light / Dark theme support (via next-themes)
+🧩 Roadmap & Upcoming Enhancements
+🔧 One-click deploy to user’s Vercel account
 
-Animated UIs built with Framer Motion & GSAP
+📚 More supported component libraries (MUI, Chakra, etc.)
 
-Seamless deploy/export UI toggles
+👥 Multi-tenant workspace sharing
 
-🧩 Roadmap & Enhancements
+💾 Autosave + version history
 
- Direct one-click deploy to user’s Vercel account
+💳 Additional payment methods (Stripe, crypto)
 
- Support for more UI libraries/components (e.g., Material UI, Chakra)
+🌍 Localization + RTL support
 
- Multi-tenant workspace saving/sharing
+## 🤝 Contribution
+Contributions are welcome! To contribute:
 
- Autosave drafts & version history
+### 1. Fork the repo
 
- Additional payment providers (Stripe, crypto)
+### 2. Create a new branch
+```bash
+git checkout -b feature/my-feature
+```
+### 3. Make your changes and commit
+```bash
+git commit -m "feat: add awesome feature"
+```
+### 4. Push the branch
+```bash
+git push origin feature/my-feature
+```
+Then open a Pull Request.
 
- Localization & RTL support
+Please follow the existing conventions (React hooks, Tailwind classes, folder structure).
 
-🤝 Contribution
+## 🧪 License
 
-Contributions are welcome! Here’s how you can help:
-
-Fork the repository
-
-Create a branch: git checkout -b feature/awesome-feature
-
-Commit your changes: git commit -m "feat: add awesome feature"
-
-Push and open a Pull Request
-
-Ensure your code follows existing conventions (React hooks, Tailwind, etc.)
-
-🧪 License
-
-This project is released under the MIT License — feel free to use, modify, and distribute.
+Licensed under the MIT License — free to use, modify, and distribute.
